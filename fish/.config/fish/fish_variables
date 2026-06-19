@@ -4,4 +4,5 @@ SETUVAR --export ENCORE_INSTALL:/home/adics/\x2eencore
 SETUVAR --export HYPRSHOT_DIR:/home/adics/Pictures/Screenshots
 SETUVAR --export QT_QPA_PLATFORMTHEME:gtk3
 SETUVAR --export WINAPPS_SRC_DIR:/Users/macbookpro/\x2elocal/bin/winapps\x2dsrc
+SETUVAR __fish_initialized:4300
 SETUVAR fish_user_paths:/Users/macbookpro/\x2elocal/bin\x1e/Users/macbookpro/\x2easdf/shims

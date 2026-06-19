@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-	theme = "jellybeans",
+	theme = "chadracula-evondev",
 
 	hl_add = {
 		NvimTreeOpenedFolderName = { fg = "green", bold = true },

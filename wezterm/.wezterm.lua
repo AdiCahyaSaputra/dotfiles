@@ -107,7 +107,7 @@ config.keys = {
 -- }
 
 local function format_tab(tab)
-	local max_length = 15
+	local max_length = 8
 
 	-- Check if truncation is actually needed
 	if #tab > max_length then

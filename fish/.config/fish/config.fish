@@ -27,6 +27,9 @@ alias netminer='mono /opt/NetworkMiner_*/NetworkMiner.exe --noupdatecheck'
 alias cr="cursor"
 alias nvim12="NVIM_APPNAME=nvim-12 nvim"
 alias python="python3"
+alias sshp="ssh -i"
+
+alias uvsrcrun="uvicorn src.main:app --reload"
 
 # === Prompt ===
 # In Bash you had: PS1='[\u@\h \W]\$ '
@@ -40,6 +43,7 @@ fish_add_path $HOME/.local/bin
 fish_add_path /opt/android-studio/bin
 fish_add_path /home/adics/.encore/bin
 fish_add_path /home/adics/go/bin
+fish_add_path /opt/homebrew/opt/ffmpeg-full/bin
 
 # === Env variables ===
 set -Ux WINAPPS_SRC_DIR $HOME/.local/bin/winapps-src
@@ -47,6 +51,18 @@ set -Ux ENCORE_INSTALL "/home/adics/.encore"
 
 set -Ux HYPRSHOT_DIR "/home/adics/Pictures/Screenshots"
 set -Ux QT_QPA_PLATFORMTHEME "gtk3"
+
+set -gx LDFLAGS "-L/opt/homebrew/opt/ffmpeg-full/lib"
+set -gx CPPFLAGS "-I/opt/homebrew/opt/ffmpeg-full/include"
+
+# Oracle Instant Client Configuration
+# Oracle Instant Client
+set -gx OCI_HOME $HOME/instant-client
+set -gx DYLD_LIBRARY_PATH (string join : $OCI_HOME $DYLD_LIBRARY_PATH)
+
+if not contains $OCI_HOME $PATH
+    fish_add_path $OCI_HOME
+end
 
 if test -e $HOME/.config/fish/env.private.fish
 	source $HOME/.config/fish/env.private.fish

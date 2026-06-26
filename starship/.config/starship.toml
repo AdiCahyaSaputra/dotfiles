@@ -1,5 +1,6 @@
 format = """
-[╭](fg:color_aqua)🛸 $username$hostname \
+[╭](fg:color_aqua)🛸\
+ $username$hostname \
 $directory\
 $git_branch\
 $git_status\
@@ -69,7 +70,6 @@ style = "green"
 
 [username]
 show_always = false
-show_on_root = true
 format = "[$user]($style)"
 style_user = "bold green"
 style_root = "bold red"

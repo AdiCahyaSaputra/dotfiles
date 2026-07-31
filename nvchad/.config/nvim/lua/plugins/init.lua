@@ -25,6 +25,7 @@ return {
 			}
 		end,
 		event = "BufReadPost",
+		enabled = false,
 	},
 
 	"NvChad/nvcommunity",

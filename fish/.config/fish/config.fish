@@ -12,7 +12,10 @@ alias cls="clear"
 alias g="git"
 alias gaa="git add ."
 alias gst="git status"
+alias gco="git checkout"
 alias glg="glab auth login"
+
+alias wails="~/go/bin/wails"
 
 alias sbashrc="source ~/.config/fish/config.fish"
 
@@ -71,6 +74,8 @@ end
 # === Plugins ===
 starship init fish | source
 zoxide init fish | source
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # === Git completion (Fish auto has strong git support, but if you want asdf/git completion) ===
 # For asdf:

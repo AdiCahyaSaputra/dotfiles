@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 
 config.window_decorations = "TITLE | RESIZE"
 -- config.window_decorations = "NONE"
-config.window_background_opacity = 1
+config.window_background_opacity = 0.9
 
 config.initial_cols = 100
 config.initial_rows = 30
@@ -18,7 +18,7 @@ config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 
 config.font = wezterm.font('JetBrainsMono Nerd Font')
-config.color_scheme = "Jellybeans"
+config.color_scheme = "Selenized Black"
 
 config.keys = {
 	-- New Tab: Ctrl + T

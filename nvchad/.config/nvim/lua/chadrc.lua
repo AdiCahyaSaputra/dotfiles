@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-	theme = "jellybeans",
+	theme = "pastelbeans",
 
 	hl_add = {
 		NvimTreeOpenedFolderName = { fg = "green", bold = true },
@@ -150,10 +150,14 @@ M.ui = {
 				return " %#St_lsp#No LSP attached "
 			end,
 			supermaven = function()
-				local api = require("supermaven-nvim.api")
-				local status = api.is_running() and " " or " "
+				local ok, api = pcall(require, "supermaven-nvim.api")
+				local status = false
 
-				return " %#St_supermaven#" .. status .. " "
+				if ok then
+					status = api.is_running()
+				end
+
+				return " %#St_supermaven#" .. (status and " " or " ") .. " "
 			end
 		}
 	},

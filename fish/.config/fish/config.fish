@@ -2,8 +2,6 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-# === Initial Command ===
-
 # === Aliases ===
 alias ls="ls --color=auto"
 alias lslah="ls -lah"
@@ -35,52 +33,64 @@ alias sshp="ssh -i"
 alias uvsrcrun="uvicorn src.main:app --reload"
 
 # === Prompt ===
-# In Bash you had: PS1='[\u@\h \W]\$ '
-# In Fish you normally use `fish_prompt` function or Starship (see below).
-# We'll let Starship handle prompt.
+# Starship handles the prompt when available (see Plugins below).
 
-# === Paths ===
-# Use fish_add_path instead of export PATH=...
-fish_add_path $HOME/.asdf/shims
-fish_add_path $HOME/.local/bin
-fish_add_path /opt/android-studio/bin
-fish_add_path /home/adics/.encore/bin
-fish_add_path /home/adics/go/bin
-fish_add_path /opt/homebrew/opt/ffmpeg-full/bin
+# === Paths (skip missing dirs so fresh machines stay quiet) ===
+for p in \
+    $HOME/.asdf/shims \
+    $HOME/.local/bin \
+    /opt/android-studio/bin \
+    $HOME/.encore/bin \
+    $HOME/go/bin \
+    /opt/homebrew/opt/ffmpeg-full/bin
+    if test -d $p
+        fish_add_path $p
+    end
+end
 
 # === Env variables ===
-set -Ux WINAPPS_SRC_DIR $HOME/.local/bin/winapps-src
-set -Ux ENCORE_INSTALL "/home/adics/.encore"
+set -gx WINAPPS_SRC_DIR $HOME/.local/bin/winapps-src
 
-set -Ux HYPRSHOT_DIR "/home/adics/Pictures/Screenshots"
-set -Ux QT_QPA_PLATFORMTHEME "gtk3"
+if test -d $HOME/.encore
+    set -gx ENCORE_INSTALL $HOME/.encore
+end
 
-set -gx LDFLAGS "-L/opt/homebrew/opt/ffmpeg-full/lib"
-set -gx CPPFLAGS "-I/opt/homebrew/opt/ffmpeg-full/include"
+if test -d $HOME/Pictures/Screenshots
+    set -gx HYPRSHOT_DIR $HOME/Pictures/Screenshots
+end
 
-# Oracle Instant Client Configuration
-# Oracle Instant Client
-set -gx OCI_HOME $HOME/instant-client
-set -gx DYLD_LIBRARY_PATH (string join : $OCI_HOME $DYLD_LIBRARY_PATH)
+if test -n "$DISPLAY"; or test -n "$WAYLAND_DISPLAY"
+    set -gx QT_QPA_PLATFORMTHEME "gtk3"
+end
 
-if not contains $OCI_HOME $PATH
+if test -d /opt/homebrew/opt/ffmpeg-full
+    set -gx LDFLAGS "-L/opt/homebrew/opt/ffmpeg-full/lib"
+    set -gx CPPFLAGS "-I/opt/homebrew/opt/ffmpeg-full/include"
+end
+
+# Oracle Instant Client (optional)
+if test -d $HOME/instant-client
+    set -gx OCI_HOME $HOME/instant-client
+    set -gx DYLD_LIBRARY_PATH (string join : $OCI_HOME $DYLD_LIBRARY_PATH)
     fish_add_path $OCI_HOME
 end
 
 if test -e $HOME/.config/fish/env.private.fish
-	source $HOME/.config/fish/env.private.fish
+    source $HOME/.config/fish/env.private.fish
 end
 
-# === Plugins ===
-starship init fish | source
-zoxide init fish | source
+# === Plugins (soft-guarded) ===
+command -q starship; and starship init fish | source
+command -q zoxide; and zoxide init fish | source
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if test -x /opt/homebrew/bin/brew
+    eval (/opt/homebrew/bin/brew shellenv)
+end
 
-# === Git completion (Fish auto has strong git support, but if you want asdf/git completion) ===
-# For asdf:
-asdf completion fish | source
+command -q asdf; and asdf completion fish 2>/dev/null | source
 
 # bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
+if test -d $HOME/.bun
+    set -gx BUN_INSTALL "$HOME/.bun"
+    fish_add_path $BUN_INSTALL/bin
+end

@@ -10,7 +10,8 @@ local lsp_servers = {
   prismals = {},
   pyright = {},
   cssls = {},
-  ts_ls = {}
+  ts_ls = {},
+  gopls = {}
 }
 
 require("mason").setup()

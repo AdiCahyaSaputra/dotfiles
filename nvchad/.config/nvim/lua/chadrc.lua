@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-	theme = "pastelbeans",
+	theme = "espresso",
 
 	hl_add = {
 		NvimTreeOpenedFolderName = { fg = "green", bold = true },
@@ -44,11 +44,11 @@ M.base46 = {
 			bg = "black2",
 		},
 		WinSeparator = {
-			fg = "grey",
+			fg = "black2",
 		},
-		IlluminatedWordText = { bold = true, bg = 'black2', reverse = false },
-		IlluminatedWordRead = { bold = true, bg = 'black2', reverse = false },
-		IlluminatedWordWrite = { bold = true, bg = 'black2', reverse = false },
+		IlluminatedWordText = { bold = true, bg = 'black2', reverse = false, underline = false },
+		IlluminatedWordRead = { bold = true, bg = 'black2', reverse = false, underline = false },
+		IlluminatedWordWrite = { bold = true, bg = 'black2', reverse = false, underline = false },
 		DiagnosticVirtualTextHint = {
 			bg = "NONE",
 		},

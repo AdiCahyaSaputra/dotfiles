@@ -20,6 +20,12 @@ config.hide_tab_bar_if_only_one_tab = true
 config.font = wezterm.font('JetBrainsMono Nerd Font')
 config.color_scheme = "Jellybeans"
 
+config.colors = {
+	cursor_bg = '#ffffff',     -- Background color of the cursor
+	cursor_fg = '#000000',     -- Background color of the cursor
+	cursor_border = '#ffffff', -- Border color of the cursor
+}
+
 config.keys = {
 	-- New Tab: Ctrl + T
 	{

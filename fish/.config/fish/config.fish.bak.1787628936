@@ -19,6 +19,7 @@ alias sbashrc="source ~/.config/fish/config.fish"
 
 alias vi="nvim"
 # alias vi="NVIM_APPNAME=nvim-12 nvim"
+alias vim="nvim"
 
 alias dock="sudo docker"
 alias dockcp="sudo docker-compose"
@@ -31,12 +32,6 @@ alias sshp="ssh -i"
 
 alias uvsrcrun="uvicorn src.main:app --reload"
 
-alias agent="cursor-agent"
-
-if test pnpm
-	alias lc4s="pnpx likec4 start"
-end
-
 # === Prompt ===
 # Starship handles the prompt when available (see Plugins below).
 
@@ -47,7 +42,6 @@ for p in \
     /opt/android-studio/bin \
     $HOME/.encore/bin \
     $HOME/go/bin \
-		/opt/homebrew/opt/rustup/bin \
     /opt/homebrew/opt/ffmpeg-full/bin
     if test -d $p
         fish_add_path $p
@@ -99,9 +93,4 @@ command -q asdf; and asdf completion fish 2>/dev/null | source
 if test -d $HOME/.bun
     set -gx BUN_INSTALL "$HOME/.bun"
     fish_add_path $BUN_INSTALL/bin
-end
-
-# Grok
-if test -d $HOME/.grok/bin
-		fish_add_path $HOME/.grok/bin
 end

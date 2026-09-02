@@ -22,6 +22,7 @@ local servers = {
 	"rust_analyzer",
 	-- "angularls",
 	"pyright",
+	-- "basedpyright",
 	-- "dartls",
 	"biome",
 	-- "svelte"
@@ -40,8 +41,28 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		map("n", "<leader>dl", function()
 			vim.diagnostic.goto_next()
 		end)
+		-- Prefer biome when attached; fall back to other LSPs (e.g. ts_ls) otherwise.
 		map("n", "<leader>lf", function()
-			vim.lsp.buf.format { async = true }
+			local bufnr = vim.api.nvim_get_current_buf()
+			local has_biome = false
+
+			for _, client in ipairs(vim.lsp.get_clients { bufnr = bufnr }) do
+				if client.name == "biome" then
+					has_biome = true
+					break
+				end
+			end
+
+			vim.lsp.buf.format {
+				async = true,
+				filter = function(client)
+					if has_biome then
+						return client.name == "biome"
+					end
+					-- biome not attached: allow ts_ls (and any other formatters)
+					return true
+				end,
+			}
 		end)
 		map("n", "gd", function()
 			require("telescope.builtin").lsp_definitions()

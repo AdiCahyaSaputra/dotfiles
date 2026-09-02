@@ -18,11 +18,11 @@ config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 
 config.font = wezterm.font('JetBrainsMono Nerd Font')
-config.color_scheme = "Jellybeans"
+config.color_scheme = "Jellybeans (Gogh)"
 
 config.colors = {
-	cursor_bg = '#ffffff',     -- Background color of the cursor
-	cursor_fg = '#000000',     -- Background color of the cursor
+	cursor_bg = '#ffffff',    -- Background color of the cursor
+	cursor_fg = '#000000',    -- Background color of the cursor
 	cursor_border = '#ffffff', -- Border color of the cursor
 }
 
@@ -33,6 +33,9 @@ config.keys = {
 		mods = "CTRL",
 		action = wezterm.action.SpawnTab "CurrentPaneDomain",
 	},
+
+	-- Enter in agentic AI
+	{ key = 'Enter', mods = 'SHIFT', action = wezterm.action.SendString '\n' },
 
 	-- Close Current Tab: Ctrl + W
 	{

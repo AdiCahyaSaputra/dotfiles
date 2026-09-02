@@ -10,7 +10,7 @@ return {
 		event = "BufReadPost",
 		opts = {
 			cursor_color = "#ffffff",
-			particles_enabled = true,
+			particles_enabled = false,
 
 			-- stiffness = 0.5,
 			-- trailing_stiffness = 0.2,
@@ -21,15 +21,15 @@ return {
 
 			never_draw_over_target = true, -- if you want to actually see under the cursor
 			hide_target_hack = true,    -- same
-			particle_spread = 1,
-			particles_per_second = 400,
-			particles_per_length = 40,
-			particle_max_lifetime = 400,
-			particle_max_initial_velocity = 20,
-			particle_velocity_from_cursor = 0.5,
-			particle_damping = 0.15,
-			particle_gravity = -50,
-			min_distance_emit_particles = 0,
+			-- particle_spread = 1,
+			-- particles_per_second = 400,
+			-- particles_per_length = 40,
+			-- particle_max_lifetime = 400,
+			-- particle_max_initial_velocity = 20,
+			-- particle_velocity_from_cursor = 0.5,
+			-- particle_damping = 0.15,
+			-- particle_gravity = -50,
+			-- min_distance_emit_particles = 0,
 		}
 	},
 
@@ -57,8 +57,14 @@ return {
 		end,
 	},
 
-	-- test new blink
+	-- blink.cmp (disables nvim-cmp via nvchad.blink.lazyspec)
 	{ import = "nvchad.blink.lazyspec" },
+	{
+		"saghen/blink.cmp",
+		opts = function()
+			return require "configs.blink"
+		end,
+	},
 
 	{ "tpope/vim-fugitive",            event = "BufReadPost" },
 	{
@@ -158,17 +164,23 @@ return {
 	},
 
 	{
-		'mg979/vim-visual-multi',
+		"mg979/vim-visual-multi",
 		branch = "master",
 		init = function()
+			-- Unbind insert Return/arrows so VM does not steal blink.cmp maps
+			-- (see https://github.com/saghen/blink.cmp/issues/406).
 			vim.g.VM_maps = {
-				['Find Under']         = '<C-n>',
-				['Find Subword Under'] = '<C-n>',
-				['Add Cursor Down']    = '<C-Down>',
-				['Add Cursor Up']      = '<C-Up>',
+				["Find Under"] = "<C-n>",
+				["Find Subword Under"] = "<C-n>",
+				["Add Cursor Down"] = "<C-Down>",
+				["Add Cursor Up"] = "<C-Up>",
+				["I Return"] = "",
+				["I Down Arrow"] = "",
+				["I Up Arrow"] = "",
 			}
+			vim.g.VM_show_warnings = 0
 		end,
-		lazy = false
+		lazy = false,
 	},
 
 	{

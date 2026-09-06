@@ -1,0 +1,102 @@
+// Migrated from Cursor keybindings.json (profile: adics)
+// Source: ~/Library/Application Support/Cursor/User/profiles/-375ca8fd/keybindings.json
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // Cursor: ctrl+i -> composerMode.agent
+      "ctrl-i": "agent::FocusAgent",
+      // Cursor: disabled ctrl+s save (use space w in vim normal)
+      "ctrl-s": null,
+      "ctrl-shift-f": "editor::OrganizeImports",
+      "ctrl-p": "file_finder::Toggle",
+      "alt-,": ["workspace::DecreaseActiveDockSize", { "px": 50 }],
+      "alt-.": ["workspace::IncreaseActiveDockSize", { "px": 50 }],
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // Cursor: jk -> escape
+      "j k": ["workspace::SendKeystrokes", "escape"],
+    },
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      // Cursor: alt+j -> <C-d>zz (scroll down + center)
+      "alt-j": ["workspace::SendKeystrokes", "ctrl-d z z"],
+      // Cursor: alt+k -> <C-u>zz (scroll up + center)
+      "alt-k": ["workspace::SendKeystrokes", "ctrl-u z z"],
+      // Cursor: shift+h/l/c -> buffer prev/next/close
+      "shift-h": "pane::ActivatePreviousItem",
+      "shift-l": "pane::ActivateNextItem",
+      "shift-c": "pane::CloseActiveItem",
+      // Cursor: shift+k -> show hover
+      "shift-k": "editor::Hover",
+      // Cursor: alt+l/h -> next/prev diagnostic
+      "alt-l": "editor::GoToDiagnostic",
+      "alt-h": "editor::GoToPreviousDiagnostic",
+      // Leader = space (from Cursor vim.leader)
+      "space w": "workspace::Save",
+      "space f f": "file_finder::Toggle",
+      "space l f": "editor::Format",
+      "space e": "workspace::ToggleLeftDock",
+      "space r a": "editor::Rename",
+      // <leader>aw — Helix jump-to-word (easymotion-style)
+      "space a w": "vim::HelixJumpToWord",
+      // Cursor: s v / s s -> split right / down
+      "s v": "pane::SplitRight",
+      "s s": "pane::SplitDown",
+    },
+  },
+  {
+    "context": "vim_mode == visual && !menu",
+    "bindings": {
+      // Replaces g l in visual mode — add cursor on next same word
+      "ctrl-n": "vim::SelectNext",
+      "g l": null,
+    },
+  },
+  {
+    "context": "Editor && vim_mode != insert",
+    "bindings": {
+      // Cursor: ctrl+j/k/h/l -> pane navigation (non-insert)
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+    },
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      // Cursor: alt+j/k in explorer -> scroll list
+      "alt-j": "project_panel::ScrollDown",
+      "alt-k": "project_panel::ScrollUp",
+      // Cursor: alt+a/f -> new file/folder
+      "alt-a": "project_panel::NewFile",
+      "alt-f": "project_panel::NewDirectory",
+    },
+  },
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      "ctrl-p": "file_finder::Toggle",
+      "space f f": "file_finder::Toggle",
+    },
+  },
+
+  // Rest Client
+  {
+    "context": "Editor && mode == full && (extension == http || extension == rest)",
+    "bindings": {
+      "cmd-enter": [
+        "task::Spawn",
+        {
+          "task_name": "▶ Send Request",
+        },
+      ],
+    },
+  },
+]

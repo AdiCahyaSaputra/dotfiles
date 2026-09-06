@@ -1,0 +1,145 @@
+// Migrated from Cursor profile (adics) — vim + editor preferences
+// Original backup: settings.json.bak-before-cursor-migration
+{
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": false,
+    "anthropic_retention": false
+  },
+  "cli_default_open_behavior": "existing_window",
+  "instrumentation": {
+    "performance_profiler": {
+      "enabled": false,
+    },
+  },
+  "auto_signature_help": false,
+  "diff_view_style": "split",
+  "helix_mode": false,
+  "agent_servers": {
+    "cursor": {
+      "default_config_options": {
+        "mode": "ask",
+      },
+      "type": "registry",
+    },
+  },
+  "terminal": {
+    "font_size": 14.0,
+  },
+  "tab_bar": {
+    "show_pinned_tabs_in_separate_row": true,
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+  },
+  "buffer_line_height": "comfortable",
+  "disable_ai": false,
+  "edit_predictions": {
+    "mode": "subtle",
+    "allow_data_collection": "no",
+    "codestral": {
+      "max_tokens": 150,
+    },
+    "provider": "codestral",
+  },
+  "project_panel": {
+    "sticky_scroll": false,
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "agent": {
+    "thinking_display": "preview",
+    "sidebar_side": "right",
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "git_panel": {
+    "dock": "left",
+  },
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "VSCode Icons for Zed (Dark)",
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+
+  // Vim + keymap base (Zed has a native Cursor keymap preset)
+  "vim_mode": true,
+  "base_keymap": "Cursor",
+
+  // Editor appearance (from Cursor profile)
+  "ui_font_size": 16,
+  "buffer_font_size": 16.0,
+  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  "tab_size": 2,
+  "cursor_blink": false,
+  "relative_line_numbers": "enabled",
+  "vertical_scroll_margin": 25,
+  "scrollbar": {
+    "show": "never",
+  },
+  "minimap": {
+    "show": "always",
+  },
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "XY-Zed",
+  },
+
+  // Vim extension settings from Cursor
+  "vim": {
+    "use_system_clipboard": "always",
+    "highlight_on_yank_duration": 200,
+    "toggle_relative_line_numbers": true,
+  },
+
+  // General editor behavior
+  "format_on_save": "on",
+  "show_completions_on_input": true,
+  "confirm_quit": true,
+
+  // Configure explicit filetype
+  "file_types": {
+    "Django": ["**/templates/**/*.html"],
+  },
+
+  // LSP
+  "languages": {
+    "Python": { "language_servers": ["pylsp", "ruff", "!basedpyright"] },
+    "TypeScript": {
+      "code_actions_on_format": {
+        "source.organizeImports.biome": true,
+      },
+    },
+    "TSX": {
+      "code_actions_on_format": {
+        "source.organizeImports.biome": true,
+      },
+      "language_servers": [
+        "!eslint",
+        "vtsls",
+        "biome",
+        "tailwindcss-language-server",
+      ],
+    },
+    "Svelte": {
+      "language_servers": [
+        "eslint",
+        "vtsls",
+        "!biome",
+        "tailwindcss-language-server",
+        "svelte-language-server",
+      ],
+    },
+  },
+}

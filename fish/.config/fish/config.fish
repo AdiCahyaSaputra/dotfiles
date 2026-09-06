@@ -31,6 +31,11 @@ alias sshp="ssh -i"
 
 alias uvsrcrun="uvicorn src.main:app --reload"
 
+alias cpenvc="python3.12 -m venv .venv" # c prefix = Claverio
+alias penvc="python -m venv .venv" # python system (3.14)
+alias penv="source .venv/bin/activate.fish"
+alias pmanage="python manage.py" # already inside .venv
+
 alias agent="cursor-agent"
 
 if test pnpm

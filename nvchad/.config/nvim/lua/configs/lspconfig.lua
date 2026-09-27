@@ -25,7 +25,7 @@ local servers = {
 	-- "basedpyright",
 	-- "dartls",
 	"biome",
-	-- "svelte"
+	"svelte"
 	-- "kotlin_language_server"
 }
 

@@ -38,6 +38,11 @@ alias pmanage="python manage.py" # already inside .venv
 
 alias agent="cursor-agent"
 
+if test codex
+	alias wcodex="CODEX_HOME=~/.codex codex"
+	alias pcodex="CODEX_HOME=~/.codex-personal codex"
+end
+
 if test pnpm
 	alias lc4s="pnpx likec4 start"
 end

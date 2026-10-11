@@ -228,6 +228,8 @@ return {
 				"prisma",
 				"vue",
 				"dart",
+				"json",
+				"python",
 			},
 			indent = {
 				enable = true,

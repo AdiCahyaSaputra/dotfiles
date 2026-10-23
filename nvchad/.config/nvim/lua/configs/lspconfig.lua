@@ -4,7 +4,7 @@ local map = vim.keymap.set
 
 local servers = {
 	"html",
-	"csharp_ls",
+	-- "csharp_ls",
 	"cssls",
 	"ts_ls",
 	"gopls",

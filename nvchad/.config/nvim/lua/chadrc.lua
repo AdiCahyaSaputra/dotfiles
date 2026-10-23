@@ -73,7 +73,7 @@ M.base46 = {
 		}
 	},
 	transparency = false,
-	lsp_semantic_tokens = false,
+	lsp_semantic_tokens = true,
 	integrations = {
 		"hop",
 		"trouble",
@@ -82,7 +82,7 @@ M.base46 = {
 		"vim-illuminate",
 		"diffview",
 	},
-	enabled = false
+	enabled = true
 }
 
 -- M.colorify = {
@@ -132,22 +132,21 @@ M.ui = {
 	statusline = {
 		theme = "default",
 		separator_style = "default",
-		-- order = { "mode", "git", "custom_lsp", "lsp_msg", "diagnostics", "%=", "%=", "file", "cwd" },
 		order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "custom_lsp", "diagnostics", "supermaven", "cwd" },
 		modules = {
 			custom_lsp = function()
 				local bufnr = vim.api.nvim_win_get_buf(vim.g.statusline_winid or 0)
+				local nolsp = " %#St_lsp# No LSP attached"
 
 				if rawget(vim, "lsp") then
 					for _, client in ipairs(vim.lsp.get_clients()) do
 						if client.attached_buffers[bufnr] then
-							return (vim.o.columns > 100 and " %#St_lsp# 󱐌 Lsp (" .. client.name .. ")") or
-									" %#St_lsp# No LSP attached"
+							return (vim.o.columns > 100 and " %#St_lsp# 󱐌 Lsp (" .. client.name .. ")") or nolsp
 						end
 					end
 				end
 
-				return " %#St_lsp#No LSP attached "
+				return nolsp
 			end,
 			supermaven = function()
 				local ok, api = pcall(require, "supermaven-nvim.api")

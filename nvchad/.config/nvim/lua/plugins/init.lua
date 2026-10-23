@@ -230,6 +230,9 @@ return {
 				"dart",
 				"json",
 				"python",
+				"svelte",
+				"bash",
+				"http"
 			},
 			indent = {
 				enable = true,

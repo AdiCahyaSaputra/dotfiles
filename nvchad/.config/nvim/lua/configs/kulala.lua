@@ -18,6 +18,20 @@ return {
 		},
 	},
 	global_keymaps = {
+		["Jump to next request"] = {
+			"<leader>Rn",
+			function()
+				require("kulala").jump_next()
+			end,
+			ft = { "http", "rest" },
+		},
+		["Jump to previous request"] = {
+			"<leader>Rp",
+			function()
+				require("kulala").jump_prev()
+			end,
+			ft = { "http", "rest" },
+		},
 		["Send request"] = {
 			"<C-CR>",
 			function()
